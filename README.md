@@ -47,6 +47,12 @@ steering_angle = -Kp \* sensor_error
 - Vanilla JavaScript for simulation
 - RequestAnimationFrame for smooth animation
 
+## Teams
+
+ - Clément Dreiski
+ - Mathéo Beaunez
+
+
 **Key Algorithms**:
 
 - Linear vector projection
