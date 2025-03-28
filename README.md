@@ -1,85 +1,54 @@
-# 🧠 Autopilot Car Simulator (Browser Edition)
+# Autonomous Cars Circuit Simulation
 
-Ce projet est une simulation simple d’un système d’autopilot embarqué directement dans le navigateur à l’aide de JavaScript et Canvas.  
-Il met en œuvre un **Lane Keeping Assist (LKA)** basique basé sur une détection de trajectoire simulée, avec un rendu visuel animé en top-down.
+A dynamic visualization of multiple self-driving cars navigating a complex circuit using sensor-based navigation and proportional control.
 
----
+[![Regarder la vidéo](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=7DevXKsIlr0)
 
-## 🚗 Fonctionnalités
+## Features
 
-- ✅ **Vue top-down** d’une voiture autonome sur une route courbée
-- ✅ **Trajectoire personnalisée** (circuit) dessinée avec Canvas
-- ✅ **Voiture en mouvement automatique**, suivant la route grâce à un algorithme de correction d’erreur
-- ✅ **Système de capteur simulé** (rayon jaune) pour détecter la distance à la trajectoire
-- ✅ **Arbres générés dynamiquement** pour décorer l’environnement
+- 🚗 **Multiple Autonomous Vehicles** - 3 cars with different colors/speeds navigating independently
+- 🛣️ **Complex Circuit Design** - Customizable closed-loop track with multiple curves
+- 🧭 **Proportional Control System** - PID-inspired steering adjustment mechanism
+- 📡 **Virtual Distance Sensors** - Visualized sensor beams for path detection
+- 🌈 **Dynamic Visualization** - Smooth animations with gradient background
 
----
+## How It Works
 
-## 🧪 Comment ça marche
+### Sensor System
 
-- Un **capteur virtuel** est placé devant la voiture pour détecter la position par rapport à la route.
-- Un algorithme proportionnel (`P-controller`) corrige l’orientation de la voiture selon l’erreur latérale mesurée.
-- Le véhicule avance automatiquement tout en corrigeant sa direction pour rester centré sur la route.
+Each car uses a front-mounted virtual sensor that:
 
----
+1. Projects 40px ahead of vehicle
+2. Measures distance to nearest track edge
+3. Calculates deviation from ideal path
 
-## 📁 Fichiers
+### Control Mechanism
 
-- `index.html` : contient tout le code JavaScript et HTML nécessaire à la simulation.
-- Aucun framework requis — tout fonctionne directement dans le navigateur.
+The navigation system implements:
 
----
+- **P (Proportional) Control**:
 
-## ✅ Lancer la démo
+steering_angle = -Kp \* sensor_error
 
-1. Ouvrez simplement `index.html` dans un navigateur moderne (Chrome, Firefox…).
-2. La simulation démarre automatiquement.
+- `Kp`: Proportional gain constant (0.005)
+- `sensor_error`: Signed distance from path (negative=left, positive=right)
 
----
+### Path Following
 
-## 🔧 Paramètres clés
+1. Vector projection calculates nearest point on track
+2. Cross product determines deviation direction
+3. Continuous steering adjustments maintain optimal path
 
-- `Kp` : constante de proportion pour corriger l’angle de la voiture (tuning possible)
-- `path[]` : liste des points représentant le circuit
-- `car.speed` : vitesse de la voiture simulée
+## Technical Details
 
----
+**Core Technologies**:
 
-## 📊 Présentation
+- HTML5 Canvas for rendering
+- Vanilla JavaScript for simulation
+- RequestAnimationFrame for smooth animation
 
-Une présentation est fournie pour expliquer :
+**Key Algorithms**:
 
-- L’architecture générale du projet
-- Les algorithmes utilisés (capteur, détection d’erreur, correction)
-- Les choix de design et limitations
-
-> Le lien vers la présentation (PDF, Canva ou PowerPoint) sera ajouté ici.
-
----
-
-## 👨‍💻 Auteurs
-
-Projet réalisé par :
-
-- **[Ton Prénom Nom]**
-- **Clément Dreiski**
-
----
-
-## 💡 Améliorations possibles
-
-- Ajout d’un **véhicule précédent** pour simuler un système d’**Adaptive Cruise Control (ACC)**
-- Utilisation d’un vrai algorithme PID (avec dérivée et intégrale)
-- Interface utilisateur pour changer les paramètres à la volée
-- Détection dynamique de la trajectoire via caméra simulée
-
----
-
-## 📝 Ressources & Inspirations
-
-- [commaai/openpilot](https://github.com/commaai/openpilot) – Pour les principes de pilotage autonome
-- Concepts de base en robotique mobile (capteurs, suivi de trajectoire)
-
----
-
-> 🔔 **IMPORTANT** : Un seul membre du groupe doit soumettre le projet avec les noms des deux membres.
+- Linear vector projection
+- Cross product for direction detection
+- Parametric path following
