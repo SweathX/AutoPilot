@@ -2,7 +2,7 @@
 
 A dynamic visualization of multiple self-driving cars navigating a complex circuit using sensor-based navigation and proportional control.
 
-[![Regarder la vidéo](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=7DevXKsIlr0)
+[![Watch the démo](https://img.youtube.com/vi/VIDEO_ID/maxresdefault.jpg)](https://www.youtube.com/watch?v=7DevXKsIlr0)
 
 ## Features
 
